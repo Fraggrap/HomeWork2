@@ -1,28 +1,35 @@
 package com.company;
 
+import java.util.concurrent.Callable;
+
 public class Main {
 
     public static void main(String[] args) {
-        creatObject("Лягушка").print();
-        creatObject("Головастик").print();
-        creatObject("Икра").print();
-
-
+        Animal a = creatObject("Лягушка");
+        Animal b = creatObject("Головастик");
+        Animal c = creatObject("Икра");
+        Animal[] ma = {a, b, c};
+        for (Animal dop: ma) {
+            dop.print();
+            System.out.println("------");
+        }
     }
 
-    public static Printable creatObject(String className) {
-//        String name = className;
+    public static Animal creatObject(String className) {
+        Animal animal = null;
         switch (className) {
             case "Лягушка":
-                return new Frog("Скольский", "Большие","4", "Длинный", "Чесночнитца");
+                animal = new Frog("Скольский", "Большие", "4", "Длинный", "Чесночнитца");
+                break;
             case "Головастик":
-                 return new Tadpole("Черный", "Дышать", "Голавастик");
+                animal = new Tadpole("Черный", "Дышать", "Голавастик");
+                break;
             case "Икра":
-                return new Caviar("Склиская", "Черная", "Икра");
-
+               animal = new Caviar("Склиская", "Черная", "Икра");
+                break;
         }
 
 
-        return null;
+        return animal;}
     }
-}
+
